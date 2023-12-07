@@ -8,7 +8,7 @@ export const setAuthHeader = (token) => {
   localStorage.setItem("auth_token", token);
 };
 
-axios.defaults.baseURL = "https://sandro-auth-app.azurewebsites.net";
+axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export const request = (method, url, data) => {

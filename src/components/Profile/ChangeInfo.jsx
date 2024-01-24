@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiChevronLeft, BiSolidCamera } from "react-icons/bi";
 import defaultAvatar from "./../../assets/avatar-default.svg";
 import { request } from "../../helpers/axios_helper";
 
 const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
-  const imageUrl = `data:image/jpeg;base64, ${data.imageData}`;
+  const imageUrl = `data:image/jpeg;base64, ${data?.imageData}`;
 
   const [file, setFile] = useState(null);
-  const [Name, setName] = useState("");
-  const [bio, setBio] = useState("");
-  const [number, setNumber] = useState("");
+  const [Name, setName] = useState(data?.name || "");
+  const [bio, setBio] = useState(data?.bio || "");
+  const [number, setNumber] = useState(data?.number || "");
+
+  if (data?.imageData && (file === null || file === undefined)) {
+    fetch(imageUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const newFile = new File([blob], "image.jpg", { type: "image/jpeg" });
+        setFile(newFile);
+      })
+      .catch((error) => {
+        console.error("Error fetching and creating File:", error);
+      });
+  }
 
   const onInfoUpload = (e, file, name, bio, number) => {
     e.preventDefault();
@@ -22,17 +34,38 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
     })
       .then((response) => {
         console.log(response);
-        setComponentToShow("messages");
+        window.location.reload();
       })
       .catch((error) => {
         // setAuthHeader(null);
         setComponentToShow("error");
         // setError(error);
       });
+    setComponentToShow("messages");
+  };
+
+  const onInfoUpdate = (e, file, name, bio, number) => {
+    e.preventDefault();
+
+    request("PUT", "/user-info", {
+      file: file,
+      name: name,
+      bio: bio,
+      number: number,
+    })
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        setComponentToShow("error");
+      });
+    setComponentToShow("messages");
   };
 
   const [state, setState] = useState({
     onInfoUpload: onInfoUpload,
+    onInfoUpdate: onInfoUpdate,
   });
 
   const onChangeInfoHandler = (event) => {
@@ -55,7 +88,9 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
   };
 
   const onSubmitUpload = (e) => {
-    state.onInfoUpload(e, file, Name, bio, number);
+    data?.name
+      ? state.onInfoUpdate(e, file, Name, bio, number)
+      : state.onInfoUpload(e, file, Name, bio, number);
   };
 
   return (
@@ -92,7 +127,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
                   <img
                     src={defaultAvatar}
                     alt="User Avatar"
-                    className="border w-[4.5rem] h-[4.5rem] rounded-lg"
+                    className="border md:w-[4.5rem] md:h-[4.5rem] rounded-lg"
                   />
                 )}
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -101,7 +136,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
               </div>
 
               <label
-                className="ml-5 text-[#8f8d8d] font-normal text-sm hover:cursor-pointer"
+                className="ml-5 text-[#8f8d8d] font-normal w-36 text-sm hover:cursor-pointer"
                 htmlFor="fileInput"
               >
                 <input
@@ -121,7 +156,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
                 type="text"
                 value={Name}
                 onChange={onChangeInfoHandler}
-                className="text-sm border rounded-xl w-96 p-3 pl-4 border-[#828282]"
+                className="text-sm border rounded-xl md:w-96 p-3 pl-4 border-[#828282]"
                 placeholder="Enter your name..."
               />
             </div>
@@ -132,7 +167,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
                 type="text"
                 value={bio}
                 onChange={onChangeInfoHandler}
-                className="text-sm border rounded-xl w-96 p-3 pl-4 pb-16 border-[#828282]"
+                className="text-sm border rounded-xl md:w-96 p-3 pl-4 pb-16 border-[#828282]"
                 placeholder="Enter your bio..."
               />
             </div>
@@ -143,7 +178,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
                 type="number"
                 value={number}
                 onChange={onChangeInfoHandler}
-                className="text-sm border rounded-xl w-96 p-3 pl-4  border-[#828282]"
+                className="text-sm border rounded-xl md:w-96 p-3 pl-4  border-[#828282]"
                 placeholder="Enter your phone..."
               />
             </div>
@@ -153,7 +188,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
                 type="email"
                 value={data.email}
                 readOnly
-                className="text-sm border rounded-xl w-96 p-3 pl-4 border-[#828282]"
+                className="text-sm border rounded-xl md:w-96 p-3 pl-4 border-[#828282]"
                 placeholder="Haven't implemented Changing Email yet"
               />
             </div>
@@ -164,7 +199,7 @@ const ChangeInfo = ({ onEdit, setComponentToShow, data }) => {
                 autoComplete="off"
                 value={data.password}
                 readOnly
-                className="text-sm border rounded-xl w-96 p-3 pl-4  border-[#828282]"
+                className="text-sm border rounded-xl md:w-96 p-3 pl-4  border-[#828282]"
                 placeholder="Haven't implemented Changing Password yet"
               />
             </div>

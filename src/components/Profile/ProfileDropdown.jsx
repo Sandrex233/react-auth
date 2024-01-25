@@ -18,9 +18,9 @@ export const ProfileDropdown = ({ logout }) => {
           </div>
         </li>
         <li className="border-t mx-4">
-          <div className="flex justify-start items-center pl-4 space-x-2 my-2 py-2 text-red-500 hover:bg-gray-100 hover:rounded-xl cursor-pointer">
+          <div onClick={logout} className="flex justify-start items-center pl-4 space-x-2 my-2 py-2 text-red-500 hover:bg-gray-100 hover:rounded-xl cursor-pointer">
             <MdLogout className="" />
-            <button onClick={logout}>Logout</button>
+            <button>Logout</button>
           </div>
         </li>
       </ul>

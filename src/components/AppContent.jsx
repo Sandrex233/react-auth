@@ -56,13 +56,14 @@ const AppContent = () => {
       });
   };
 
+  console.log(error)
   return (
     <>
       {componentToShow === "login" && (
         <AuthenticationForm onLogin={onLogin} onRegister={onRegister} />
       )}
       {componentToShow === "messages" && <AuthContent setComponentToShow={setComponentToShow} logout={logout} />}
-      {componentToShow === "error" && <ErrorComponent error={error.message} />}
+      {componentToShow === "error" && <ErrorComponent setComponentToShow={setComponentToShow} error={error} />}
     </>
   );
 };

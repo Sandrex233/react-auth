@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-<h1 align="center">{Your project name}</h1>
+<h1 align="center">Authentication App</h1>
 
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
@@ -8,15 +8,15 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://sandro-react-auth-app.netlify.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/Sandrex233/react-auth">
       Solution
     </a>
     <span> | </span>
-    <a href="https://devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw">
+    <a href="https://legacy.devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw">
       Challenge
     </a>
   </h3>
@@ -37,38 +37,36 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](https://github.com/Sandrex233/react-auth/assets/76789502/ccfbb87e-f2e3-4f5d-bf42-8b7fdfa8e3ca)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+Authentication App is a full-stack authentication application created as a submission to the [DevChallenges](https://devchallenges.io/challenges) challenge [Authentication App](https://legacy.devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw). The application is designed to meet diverse user needs while prioritizing security and user experience.
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Java](https://www.java.com/)
+- [Spring Framework](https://spring.io/projects/spring-boot)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Azure Cloud](https://azure.microsoft.com/)
+
 
 ## Features
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw) was to build an application to complete the given user storie.
+This application/site was created as a submission to the [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://legacy.devchallenges.io/challenges/N1fvBjQfhlkctmwj1tnw) was to build an application to complete the given user stories.
 
 ## How To Use
-
-<!-- Example: -->
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/Sandrex233/react-auth
+
+# Navigate to the project folder
+$ cd react-auth
 
 # Install dependencies
 $ npm install
@@ -87,6 +85,5 @@ $ npm start
 
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+- Website [My Personal Website](https://sandro-tsertsvadze-personal-app.netlify.app/)
+- GitHub [@Sandrex233](https://github.com/Sandrex233)
